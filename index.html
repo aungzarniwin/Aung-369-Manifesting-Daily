@@ -976,13 +976,23 @@ updateDashboard();
 
 function enableNotifications(){
 
-   ... V8 code ...
+if(!("Notification" in window)){
+alert("ဒီ Browser မှာ Notification မရပါ။");
+return;
+}
+
+Notification.requestPermission().then(permission=>{
+
+if(permission==="granted"){
+
+alert("🔔 Notifications Enabled!");
+
+}else{
+
+alert("⚠️ Notification Permission မရပါ။");
 
 }
 
-};
+});
 
-</script>
-
-</body>
-</html>
+}
