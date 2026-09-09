@@ -6,173 +6,164 @@
 <title>Aung's 369 Manifesting</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+
+body{
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f0ff;
+color:#222;
 }
 
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f5f0ff;
-  color: #222;
+.container{
+max-width:600px;
+margin:auto;
+padding:20px;
 }
 
-.container {
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
+h1{
+text-align:center;
+margin-bottom:5px;
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 5px;
+.subtitle{
+text-align:center;
+color:#666;
+margin-bottom:25px;
 }
 
-.subtitle {
-  text-align: center;
-  color: #666;
-  margin-bottom: 25px;
+.card{
+background:white;
+padding:20px;
+margin-bottom:20px;
+border-radius:18px;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
-.card {
-  background: white;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 18px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+h2{margin-top:0}
+
+label{
+display:block;
+margin-top:12px;
+font-weight:bold;
 }
 
-h2 {
-  margin-top: 0;
+textarea{
+width:100%;
+padding:12px;
+margin-top:8px;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+resize:vertical;
 }
 
-label {
-  display: block;
-  margin-top: 12px;
-  font-weight: bold;
+button{
+width:100%;
+padding:14px;
+margin-top:12px;
+border:0;
+border-radius:10px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
 }
 
-textarea {
-  width: 100%;
-  padding: 12px;
-  margin-top: 8px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  font-size: 16px;
-  resize: vertical;
+.save,.journal-btn{
+background:#7b3ff2;
+color:white;
 }
 
-button {
-  width: 100%;
-  padding: 14px;
-  margin-top: 12px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
+.practice{
+background:#222;
+color:white;
 }
 
-.save {
-  background: #7b3ff2;
-  color: white;
+.progress-box{
+background:#f1ebff;
+padding:20px;
+border-radius:15px;
+text-align:center;
 }
 
-.practice {
-  background: #222;
-  color: white;
+.progress-number{
+font-size:38px;
+font-weight:bold;
 }
 
-.journal-btn {
-  background: #7b3ff2;
-  color: white;
+.progress-bar{
+width:100%;
+height:15px;
+background:#ddd;
+border-radius:10px;
+overflow:hidden;
+margin-top:12px;
 }
 
-.progress-box {
-  background: #f1ebff;
-  padding: 20px;
-  border-radius: 15px;
-  text-align: center;
+.progress-fill{
+height:100%;
+width:0%;
+background:#7b3ff2;
+transition:.3s;
 }
 
-.progress-number {
-  font-size: 38px;
-  font-weight: bold;
+.counter{
+display:flex;
+gap:10px;
+margin-top:15px;
 }
 
-.progress-bar {
-  width: 100%;
-  height: 15px;
-  background: #ddd;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 12px;
+.box{
+flex:1;
+text-align:center;
+padding:18px 5px;
+background:#f1ebff;
+border-radius:12px;
+font-size:20px;
+font-weight:bold;
 }
 
-.progress-fill {
-  height: 100%;
-  width: 0%;
-  background: #7b3ff2;
-  transition: 0.3s;
+.small{
+display:block;
+font-size:13px;
+margin-top:5px;
+color:#666;
 }
 
-.counter {
-  display: flex;
-  gap: 10px;
-  margin-top: 15px;
+.streak{
+text-align:center;
+font-size:25px;
+font-weight:bold;
 }
 
-.box {
-  flex: 1;
-  text-align: center;
-  padding: 18px 5px;
-  background: #f1ebff;
-  border-radius: 12px;
-  font-size: 20px;
-  font-weight: bold;
+.badge{
+text-align:center;
+margin-top:12px;
+font-size:18px;
 }
 
-.small {
-  display: block;
-  font-size: 13px;
-  margin-top: 5px;
-  color: #666;
+.history{
+line-height:1.8;
+color:#555;
 }
 
-.streak {
-  text-align: center;
-  font-size: 25px;
-  font-weight: bold;
+.journal-entry{
+background:#f8f5ff;
+padding:12px;
+border-radius:10px;
+margin-top:10px;
 }
 
-.badge {
-  text-align: center;
-  margin-top: 12px;
-  font-size: 18px;
+.journal-date{
+font-weight:bold;
+color:#7b3ff2;
+margin-bottom:5px;
 }
 
-.history {
-  line-height: 1.8;
-  color: #555;
-}
-
-.journal-entry {
-  background: #f8f5ff;
-  padding: 12px;
-  border-radius: 10px;
-  margin-top: 10px;
-}
-
-.journal-date {
-  font-weight: bold;
-  color: #7b3ff2;
-  margin-bottom: 5px;
-}
-
-.message {
-  text-align: center;
-  margin-top: 15px;
-  font-weight: bold;
+.message{
+text-align:center;
+margin-top:15px;
+font-weight:bold;
 }
 </style>
 </head>
@@ -187,24 +178,18 @@ button {
 369 Method • Daily Manifestation
 </div>
 
-
-<!-- GOAL -->
 <div class="card">
 
 <h2>🌟 My Intention</h2>
 
 <label>My Goal</label>
 
-<textarea
-id="goal"
-rows="3"
+<textarea id="goal" rows="3"
 placeholder="Write your goal..."></textarea>
 
 <label>My Affirmation</label>
 
-<textarea
-id="affirmation"
-rows="3"
+<textarea id="affirmation" rows="3"
 placeholder="Write your affirmation..."></textarea>
 
 <button class="save" onclick="saveGoal()">
@@ -214,16 +199,13 @@ placeholder="Write your affirmation..."></textarea>
 </div>
 
 
-<!-- TODAY'S PROGRESS -->
 <div class="card">
 
 <h2>📊 Today's Progress</h2>
 
 <div class="progress-box">
 
-<div class="progress-number" id="progress">
-0%
-</div>
+<div class="progress-number" id="progress">0%</div>
 
 <div class="progress-bar">
 <div class="progress-fill" id="progressFill"></div>
@@ -269,7 +251,6 @@ Start your 369 practice today ✨
 </div>
 
 
-<!-- STREAK -->
 <div class="card">
 
 <div class="streak">
@@ -283,16 +264,13 @@ Start your 369 practice today ✨
 </div>
 
 
-<!-- DAILY JOURNAL -->
 <div class="card">
 
 <h2>📝 Daily Journal</h2>
 
 <label>How do I feel today?</label>
 
-<textarea
-id="journal"
-rows="5"
+<textarea id="journal" rows="5"
 placeholder="Write your thoughts, feelings, gratitude or manifestation..."></textarea>
 
 <button class="journal-btn" onclick="saveJournal()">
@@ -304,7 +282,6 @@ placeholder="Write your thoughts, feelings, gratitude or manifestation..."></tex
 </div>
 
 
-<!-- JOURNAL HISTORY -->
 <div class="card">
 
 <h2>📖 Journal History</h2>
@@ -316,7 +293,6 @@ No journal entries yet.
 </div>
 
 
-<!-- PRACTICE HISTORY -->
 <div class="card">
 
 <h2>📜 369 Practice History</h2>
@@ -332,154 +308,122 @@ No completed days yet.
 
 <script>
 
+function getToday(){
 
-// GET TODAY
-function getToday() {
+const d=new Date();
 
-const d = new Date();
-
-return d.getFullYear() + "-" +
-String(d.getMonth() + 1).padStart(2, "0") + "-" +
-String(d.getDate()).padStart(2, "0");
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
 
 }
 
 
-// RESET DAILY PRACTICE
-function checkNewDay() {
+function checkNewDay(){
 
-const today = getToday();
+const today=getToday();
 
-const savedDate =
-localStorage.getItem("practiceDate");
+const savedDate=localStorage.getItem("practiceDate");
 
-if (savedDate !== today) {
+if(savedDate!==today){
 
-localStorage.setItem(
-"practiceDate",
-today
-);
+localStorage.setItem("practiceDate",today);
 
-localStorage.setItem("morning", "0");
-localStorage.setItem("afternoon", "0");
-localStorage.setItem("night", "0");
+localStorage.setItem("morning","0");
+localStorage.setItem("afternoon","0");
+localStorage.setItem("night","0");
 
 }
 
 }
 
 
-// SAVE GOAL
-function saveGoal() {
+function saveGoal(){
 
-const goal =
-document.getElementById("goal").value;
+const goal=document.getElementById("goal").value;
+const affirmation=document.getElementById("affirmation").value;
 
-const affirmation =
-document.getElementById("affirmation").value;
+localStorage.setItem("goal",goal);
+localStorage.setItem("affirmation",affirmation);
 
-localStorage.setItem("goal", goal);
-
-localStorage.setItem(
-"affirmation",
-affirmation
-);
-
-document.getElementById("message").innerHTML =
+document.getElementById("message").innerHTML=
 "✅ Goal and affirmation saved!";
 
 }
 
 
-// UPDATE PROGRESS
-function updateProgress() {
+function updateProgress(){
 
-const morning =
-localStorage.getItem("morning") === "3";
+const morning=localStorage.getItem("morning")==="3";
+const afternoon=localStorage.getItem("afternoon")==="6";
+const night=localStorage.getItem("night")==="9";
 
-const afternoon =
-localStorage.getItem("afternoon") === "6";
+let progress=0;
 
-const night =
-localStorage.getItem("night") === "9";
+if(morning)progress+=33.33;
+if(afternoon)progress+=33.33;
+if(night)progress+=33.34;
 
-let progress = 0;
+document.getElementById("progress").innerText=
+Math.round(progress)+"%";
 
-if (morning) progress += 33.33;
-
-if (afternoon) progress += 33.33;
-
-if (night) progress += 33.34;
-
-document.getElementById("progress").innerText =
-Math.round(progress) + "%";
-
-document.getElementById("progressFill").style.width =
-progress + "%";
+document.getElementById("progressFill").style.width=
+progress+"%";
 
 }
 
 
-// MORNING
-function completeMorning() {
+function completeMorning(){
 
-localStorage.setItem("morning", "3");
+localStorage.setItem("morning","3");
 
-document.getElementById("morning").innerText = "3";
+document.getElementById("morning").innerText="3";
 
 updateProgress();
 
-document.getElementById("message").innerHTML =
+document.getElementById("message").innerHTML=
 "☀️ Morning 3 completed!";
 
 }
 
 
-// AFTERNOON
-function completeAfternoon() {
+function completeAfternoon(){
 
-localStorage.setItem("afternoon", "6");
+localStorage.setItem("afternoon","6");
 
-document.getElementById("afternoon").innerText = "6";
+document.getElementById("afternoon").innerText="6";
 
 updateProgress();
 
-document.getElementById("message").innerHTML =
+document.getElementById("message").innerHTML=
 "🌤️ Afternoon 6 completed!";
 
 }
 
 
-// NIGHT
-function completeNight() {
+function completeNight(){
 
-const today = getToday();
+const today=getToday();
 
-if (
-localStorage.getItem("completedToday") === today
-) {
+if(localStorage.getItem("completedToday")===today){
 
-document.getElementById("message").innerHTML =
+document.getElementById("message").innerHTML=
 "✅ Today's 369 is already complete!";
 
 return;
 
 }
 
-localStorage.setItem("night", "9");
+localStorage.setItem("night","9");
 
-document.getElementById("night").innerText = "9";
+document.getElementById("night").innerText="9";
 
 updateProgress();
 
+let history=
+JSON.parse(localStorage.getItem("history")||"[]");
 
-let history =
-JSON.parse(
-localStorage.getItem("history") || "[]"
-);
-
-
-if (!history.includes(today)) {
+if(!history.includes(today)){
 
 history.push(today);
 
@@ -490,15 +434,11 @@ JSON.stringify(history)
 
 }
 
-
 calculateStreak();
 
-localStorage.setItem(
-"completedToday",
-today
-);
+localStorage.setItem("completedToday",today);
 
-document.getElementById("message").innerHTML =
+document.getElementById("message").innerHTML=
 "🎉 Today's 369 practice is complete!";
 
 showHistory();
@@ -506,17 +446,14 @@ showHistory();
 }
 
 
-// CALCULATE STREAK
-function calculateStreak() {
+function calculateStreak(){
 
-const history =
-JSON.parse(
-localStorage.getItem("history") || "[]"
-);
+const history=
+JSON.parse(localStorage.getItem("history")||"[]");
 
-if (history.length === 0) {
+if(history.length===0){
 
-document.getElementById("streak").innerText = "0";
+document.getElementById("streak").innerText="0";
 
 updateBadge(0);
 
@@ -524,33 +461,24 @@ return;
 
 }
 
+const dates=history
+.map(date=>new Date(date))
+.sort((a,b)=>b-a);
 
-const dates = history
-.map(date => new Date(date))
-.sort((a,b) => b-a);
+let streak=1;
 
+for(let i=0;i<dates.length-1;i++){
 
-let streak = 1;
-
-
-for (
-let i = 0;
-i < dates.length - 1;
-i++
-) {
-
-const difference =
-Math.round(
-(dates[i] - dates[i + 1]) /
-(1000 * 60 * 60 * 24)
+const difference=Math.round(
+(dates[i]-dates[i+1])/
+(1000*60*60*24)
 );
 
-
-if (difference === 1) {
+if(difference===1){
 
 streak++;
 
-} else {
+}else{
 
 break;
 
@@ -558,118 +486,87 @@ break;
 
 }
 
-
-document.getElementById("streak").innerText =
-streak;
+document.getElementById("streak").innerText=streak;
 
 updateBadge(streak);
 
 }
 
 
-// BADGES
-function updateBadge(streak) {
+function updateBadge(streak){
 
-let badge =
-"🌱 Start Your Journey";
+let badge="🌱 Start Your Journey";
 
-if (streak >= 7) {
-
-badge =
-"🏆 7 Days Streak!";
-
+if(streak>=7){
+badge="🏆 7 Days Streak!";
 }
 
-if (streak >= 30) {
-
-badge =
-"🥇 30 Days Streak!";
-
+if(streak>=30){
+badge="🥇 30 Days Streak!";
 }
 
-if (streak >= 100) {
-
-badge =
-"👑 100 Days Master!";
-
+if(streak>=100){
+badge="👑 100 Days Master!";
 }
 
-document.getElementById("badge").innerText =
-badge;
+document.getElementById("badge").innerText=badge;
 
 }
 
 
-// PRACTICE HISTORY
-function showHistory() {
+function showHistory(){
 
-const history =
-JSON.parse(
-localStorage.getItem("history") || "[]"
-);
+const history=
+JSON.parse(localStorage.getItem("history")||"[]");
 
-const box =
-document.getElementById("history");
+const box=document.getElementById("history");
 
+if(history.length===0){
 
-if (history.length === 0) {
-
-box.innerHTML =
-"No completed days yet.";
+box.innerHTML="No completed days yet.";
 
 return;
 
 }
 
-
-box.innerHTML =
+box.innerHTML=
 history
 .slice()
 .reverse()
-.slice(0, 10)
-.map(date =>
-"✅ " + date
-)
+.slice(0,10)
+.map(date=>"✅ "+date)
 .join("<br>");
 
 }
 
 
-// SAVE JOURNAL
-function saveJournal() {
+function saveJournal(){
 
-const today = getToday();
+const today=getToday();
 
-const text =
+const text=
 document.getElementById("journal").value.trim();
 
+if(!text){
 
-if (!text) {
-
-document.getElementById("journalMessage").innerHTML =
+document.getElementById("journalMessage").innerHTML=
 "✍️ Please write something first.";
 
 return;
 
 }
 
+let journals=
+JSON.parse(localStorage.getItem("journals")||"{}");
 
-let journals =
-JSON.parse(
-localStorage.getItem("journals") || "{}"
-);
-
-
-journals[today] = text;
-
+journals[today]=text;
 
 localStorage.setItem(
 "journals",
 JSON.stringify(journals)
 );
 
-
-document.getElementById("journalMessage").innerHTML =
+document.getElementById("journalMessage").innerHTML=
 "✅ Today's journal saved!";
 
 showJournalHistory();
@@ -677,38 +574,27 @@ showJournalHistory();
 }
 
 
-// JOURNAL HISTORY
-function showJournalHistory() {
+function showJournalHistory(){
 
-const journals =
-JSON.parse(
-localStorage.getItem("journals") || "{}"
-);
+const journals=
+JSON.parse(localStorage.getItem("journals")||"{}");
 
+const box=document.getElementById("journalHistory");
 
-const box =
-document.getElementById("journalHistory");
-
-
-const dates =
-Object.keys(journals)
+const dates=Object.keys(journals)
 .sort()
 .reverse()
-.slice(0, 10);
+.slice(0,10);
 
+if(dates.length===0){
 
-if (dates.length === 0) {
-
-box.innerHTML =
-"No journal entries yet.";
+box.innerHTML="No journal entries yet.";
 
 return;
 
 }
 
-
-box.innerHTML =
-dates.map(date => {
+box.innerHTML=dates.map(date=>{
 
 return `
 <div class="journal-entry">
@@ -726,68 +612,52 @@ ${escapeHTML(journals[date])}
 }
 
 
-// SECURITY
-function escapeHTML(text) {
+function escapeHTML(text){
 
 return text
-.replace(/&/g, "&amp;")
-.replace(/</g, "&lt;")
-.replace(/>/g, "&gt;")
-.replace(/"/g, "&quot;")
-.replace(/'/g, "&#039;");
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
 
 }
 
 
-// PAGE LOAD
-window.onload = function() {
+window.onload=function(){
 
 checkNewDay();
 
+document.getElementById("goal").value=
+localStorage.getItem("goal")||"";
 
-document.getElementById("goal").value =
-localStorage.getItem("goal") || "";
+document.getElementById("affirmation").value=
+localStorage.getItem("affirmation")||"";
 
+document.getElementById("morning").innerText=
+localStorage.getItem("morning")||"0";
 
-document.getElementById("affirmation").value =
-localStorage.getItem("affirmation") || "";
+document.getElementById("afternoon").innerText=
+localStorage.getItem("afternoon")||"0";
 
+document.getElementById("night").innerText=
+localStorage.getItem("night")||"0";
 
-document.getElementById("morning").innerText =
-localStorage.getItem("morning") || "0";
+const journals=
+JSON.parse(localStorage.getItem("journals")||"{}");
 
+const today=getToday();
 
-document.getElementById("afternoon").innerText =
-localStorage.getItem("afternoon") || "0";
+if(journals[today]){
 
-
-document.getElementById("night").innerText =
-localStorage.getItem("night") || "0";
-
-
-const journals =
-JSON.parse(
-localStorage.getItem("journals") || "{}"
-);
-
-
-const today = getToday();
-
-
-if (journals[today]) {
-
-document.getElementById("journal").value =
+document.getElementById("journal").value=
 journals[today];
 
 }
 
-
 calculateStreak();
-
 updateProgress();
-
 showHistory();
-
 showJournalHistory();
 
 };
