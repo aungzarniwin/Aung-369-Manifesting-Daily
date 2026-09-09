@@ -7,98 +7,149 @@
 <title>Aung's 369 Manifesting</title>
 
 <style>
+
 * {
-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-margin: 0;
-font-family: Arial, sans-serif;
-background: #f5f0ff;
-color: #222;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f0ff;
+  color: #222;
 }
 
 .container {
-max-width: 600px;
-margin: auto;
-padding: 20px;
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
 }
 
 h1 {
-text-align: center;
-margin-bottom: 8px;
+  text-align: center;
+  margin-bottom: 5px;
 }
 
 .subtitle {
-text-align: center;
-color: #666;
-margin-bottom: 25px;
+  text-align: center;
+  color: #666;
+  margin-bottom: 25px;
 }
 
 .card {
-background: white;
-padding: 20px;
-margin-bottom: 20px;
-border-radius: 18px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 18px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+h2 {
+  margin-top: 0;
 }
 
 label {
-display: block;
-margin-top: 12px;
-font-weight: bold;
+  display: block;
+  margin-top: 12px;
+  font-weight: bold;
 }
 
 textarea {
-width: 100%;
-padding: 12px;
-margin-top: 8px;
-border: 1px solid #ccc;
-border-radius: 10px;
-font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
 }
 
 button {
-width: 100%;
-padding: 14px;
-margin-top: 15px;
-border: none;
-border-radius: 10px;
-font-size: 16px;
-font-weight: bold;
-background: #7b3ff2;
-color: white;
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.save {
+  background: #7b3ff2;
+  color: white;
+}
+
+.practice {
+  background: #222;
+  color: white;
+}
+
+.progress-box {
+  background: #f1ebff;
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.progress-number {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 15px;
+  background: #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #7b3ff2;
+  transition: 0.3s;
 }
 
 .counter {
-display: flex;
-gap: 10px;
-margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
 }
 
 .box {
-flex: 1;
-text-align: center;
-padding: 18px 5px;
-background: #f1ebff;
-border-radius: 12px;
-font-size: 20px;
-font-weight: bold;
+  flex: 1;
+  text-align: center;
+  padding: 18px 5px;
+  background: #f1ebff;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .small {
-display: block;
-font-size: 13px;
-margin-top: 5px;
-color: #666;
+  display: block;
+  font-size: 13px;
+  margin-top: 5px;
+  color: #666;
 }
 
-.success {
-text-align: center;
-margin-top: 15px;
-font-weight: bold;
+.streak {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
 }
+
+.message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
 </style>
+
 </head>
 
 <body>
@@ -110,6 +161,7 @@ font-weight: bold;
 <div class="subtitle">
 369 Method • Daily Manifestation
 </div>
+
 
 <div class="card">
 
@@ -123,15 +175,17 @@ rows="3"
 placeholder="Write your goal...">
 </textarea>
 
+
 <label>My Affirmation</label>
 
 <textarea
 id="affirmation"
 rows="3"
-placeholder="Example: I am earning 25 lakh MMK every month as a successful Sales Manager.">
+placeholder="Write your affirmation...">
 </textarea>
 
-<button onclick="saveGoal()">
+
+<button class="save" onclick="saveGoal()">
 💾 Save My Goal
 </button>
 
@@ -140,44 +194,106 @@ placeholder="Example: I am earning 25 lakh MMK every month as a successful Sales
 
 <div class="card">
 
-<h2>🔢 Today's 369 Practice</h2>
+<h2>📊 Today's Progress</h2>
 
-<p>
-Write your affirmation:
-</p>
+<div class="progress-box">
+
+<div class="progress-number" id="progress">
+0%
+</div>
+
+<div class="progress-bar">
+
+<div
+class="progress-fill"
+id="progressFill">
+</div>
+
+</div>
+
+</div>
+
 
 <div class="counter">
 
 <div class="box">
+
 <span id="morning">0</span>
-<span class="small">Morning / 3</span>
+
+<span class="small">
+Morning / 3
+</span>
+
 </div>
 
+
 <div class="box">
+
 <span id="afternoon">0</span>
-<span class="small">Afternoon / 6</span>
+
+<span class="small">
+Afternoon / 6
+</span>
+
 </div>
+
 
 <div class="box">
+
 <span id="night">0</span>
-<span class="small">Night / 9</span>
-</div>
+
+<span class="small">
+Night / 9
+</span>
 
 </div>
 
-<button onclick="completeMorning()">
+</div>
+
+
+<button
+class="practice"
+onclick="completeMorning()">
+
 ☀️ Complete Morning 3
+
 </button>
 
-<button onclick="completeAfternoon()">
+
+<button
+class="practice"
+onclick="completeAfternoon()">
+
 🌤️ Complete Afternoon 6
+
 </button>
 
-<button onclick="completeNight()">
+
+<button
+class="practice"
+onclick="completeNight()">
+
 🌙 Complete Night 9
+
 </button>
 
-<div id="message" class="success"></div>
+
+<div
+class="message"
+id="message">
+Start your 369 practice today ✨
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="streak">
+
+🔥 Streak: <span id="streak">0</span> Days
+
+</div>
 
 </div>
 
@@ -195,40 +311,94 @@ const affirmation =
 document.getElementById("affirmation").value;
 
 localStorage.setItem("goal", goal);
-localStorage.setItem("affirmation", affirmation);
+
+localStorage.setItem(
+"affirmation",
+affirmation
+);
 
 document.getElementById("message").innerHTML =
-"✅ Your goal has been saved!";
+"✅ Goal and affirmation saved!";
+
+}
+
+
+function updateProgress() {
+
+const morning =
+Number(localStorage.getItem("morning") || 0);
+
+const afternoon =
+Number(localStorage.getItem("afternoon") || 0);
+
+const night =
+Number(localStorage.getItem("night") || 0);
+
+let progress = 0;
+
+if (morning === 3) {
+progress += 33.33;
+}
+
+if (afternoon === 6) {
+progress += 33.33;
+}
+
+if (night === 9) {
+progress += 33.34;
+}
+
+document.getElementById("progress").innerText =
+Math.round(progress) + "%";
+
+document.getElementById("progressFill").style.width =
+progress + "%";
 
 }
 
 
 function completeMorning() {
 
+localStorage.setItem("morning", "3");
+
 document.getElementById("morning").innerText = "3";
 
-localStorage.setItem("morning", "3");
+updateProgress();
 
 }
 
 
 function completeAfternoon() {
 
+localStorage.setItem("afternoon", "6");
+
 document.getElementById("afternoon").innerText = "6";
 
-localStorage.setItem("afternoon", "6");
+updateProgress();
 
 }
 
 
 function completeNight() {
 
-document.getElementById("night").innerText = "9";
-
 localStorage.setItem("night", "9");
 
+document.getElementById("night").innerText = "9";
+
+updateProgress();
+
 document.getElementById("message").innerHTML =
-"🎉 Today's 369 practice is complete!";
+"🎉 369 Complete! Amazing work today!";
+
+let streak =
+Number(localStorage.getItem("streak") || 0);
+
+streak++;
+
+localStorage.setItem("streak", streak);
+
+document.getElementById("streak").innerText =
+streak;
 
 }
 
@@ -249,6 +419,11 @@ localStorage.getItem("afternoon") || "0";
 
 document.getElementById("night").innerText =
 localStorage.getItem("night") || "0";
+
+document.getElementById("streak").innerText =
+localStorage.getItem("streak") || "0";
+
+updateProgress();
 
 };
 
