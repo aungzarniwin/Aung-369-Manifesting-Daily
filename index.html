@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Aung's 369 Manifesting</title>
+
+<style>
+* {
+box-sizing: border-box;
+}
+
+body {
+margin: 0;
+font-family: Arial, sans-serif;
+background: #f5f0ff;
+color: #222;
+}
+
+.container {
+max-width: 600px;
+margin: auto;
+padding: 20px;
+}
+
+h1 {
+text-align: center;
+margin-bottom: 8px;
+}
+
+.subtitle {
+text-align: center;
+color: #666;
+margin-bottom: 25px;
+}
+
+.card {
+background: white;
+padding: 20px;
+margin-bottom: 20px;
+border-radius: 18px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+label {
+display: block;
+margin-top: 12px;
+font-weight: bold;
+}
+
+textarea {
+width: 100%;
+padding: 12px;
+margin-top: 8px;
+border: 1px solid #ccc;
+border-radius: 10px;
+font-size: 16px;
+}
+
+button {
+width: 100%;
+padding: 14px;
+margin-top: 15px;
+border: none;
+border-radius: 10px;
+font-size: 16px;
+font-weight: bold;
+background: #7b3ff2;
+color: white;
+}
+
+.counter {
+display: flex;
+gap: 10px;
+margin-top: 15px;
+}
+
+.box {
+flex: 1;
+text-align: center;
+padding: 18px 5px;
+background: #f1ebff;
+border-radius: 12px;
+font-size: 20px;
+font-weight: bold;
+}
+
+.small {
+display: block;
+font-size: 13px;
+margin-top: 5px;
+color: #666;
+}
+
+.success {
+text-align: center;
+margin-top: 15px;
+font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>✨ Aung's 369 Manifesting</h1>
+
+<div class="subtitle">
+369 Method • Daily Manifestation
+</div>
+
+<div class="card">
+
+<h2>🌟 My Intention</h2>
+
+<label>My Goal</label>
+
+<textarea
+id="goal"
+rows="3"
+placeholder="Write your goal...">
+</textarea>
+
+<label>My Affirmation</label>
+
+<textarea
+id="affirmation"
+rows="3"
+placeholder="Example: I am earning 25 lakh MMK every month as a successful Sales Manager.">
+</textarea>
+
+<button onclick="saveGoal()">
+💾 Save My Goal
+</button>
+
+</div>
+
+
+<div class="card">
+
+<h2>🔢 Today's 369 Practice</h2>
+
+<p>
+Write your affirmation:
+</p>
+
+<div class="counter">
+
+<div class="box">
+<span id="morning">0</span>
+<span class="small">Morning / 3</span>
+</div>
+
+<div class="box">
+<span id="afternoon">0</span>
+<span class="small">Afternoon / 6</span>
+</div>
+
+<div class="box">
+<span id="night">0</span>
+<span class="small">Night / 9</span>
+</div>
+
+</div>
+
+<button onclick="completeMorning()">
+☀️ Complete Morning 3
+</button>
+
+<button onclick="completeAfternoon()">
+🌤️ Complete Afternoon 6
+</button>
+
+<button onclick="completeNight()">
+🌙 Complete Night 9
+</button>
+
+<div id="message" class="success"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+function saveGoal() {
+
+const goal =
+document.getElementById("goal").value;
+
+const affirmation =
+document.getElementById("affirmation").value;
+
+localStorage.setItem("goal", goal);
+localStorage.setItem("affirmation", affirmation);
+
+document.getElementById("message").innerHTML =
+"✅ Your goal has been saved!";
+
+}
+
+
+function completeMorning() {
+
+document.getElementById("morning").innerText = "3";
+
+localStorage.setItem("morning", "3");
+
+}
+
+
+function completeAfternoon() {
+
+document.getElementById("afternoon").innerText = "6";
+
+localStorage.setItem("afternoon", "6");
+
+}
+
+
+function completeNight() {
+
+document.getElementById("night").innerText = "9";
+
+localStorage.setItem("night", "9");
+
+document.getElementById("message").innerHTML =
+"🎉 Today's 369 practice is complete!";
+
+}
+
+
+window.onload = function() {
+
+document.getElementById("goal").value =
+localStorage.getItem("goal") || "";
+
+document.getElementById("affirmation").value =
+localStorage.getItem("affirmation") || "";
+
+document.getElementById("morning").innerText =
+localStorage.getItem("morning") || "0";
+
+document.getElementById("afternoon").innerText =
+localStorage.getItem("afternoon") || "0";
+
+document.getElementById("night").innerText =
+localStorage.getItem("night") || "0";
+
+};
+
+</script>
+
+</body>
+</html>
