@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Aung's 369 Manifesting</title>
 
 <style>
@@ -41,6 +40,10 @@ h1 {
   margin-bottom: 20px;
   border-radius: 18px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+h2 {
+  margin-top: 0;
 }
 
 label {
@@ -84,7 +87,6 @@ button {
   padding: 20px;
   border-radius: 15px;
   text-align: center;
-  margin-bottom: 15px;
 }
 
 .progress-number {
@@ -133,7 +135,7 @@ button {
 
 .streak {
   text-align: center;
-  font-size: 24px;
+  font-size: 25px;
   font-weight: bold;
 }
 
@@ -146,6 +148,12 @@ button {
 .history {
   line-height: 1.8;
   color: #555;
+}
+
+.message {
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
 }
 </style>
 </head>
@@ -160,7 +168,6 @@ button {
 369 Method • Daily Manifestation
 </div>
 
-
 <div class="card">
 
 <h2>🌟 My Intention</h2>
@@ -170,16 +177,14 @@ button {
 <textarea
 id="goal"
 rows="3"
-placeholder="Write your goal...">
-</textarea>
+placeholder="Write your goal..."></textarea>
 
 <label>My Affirmation</label>
 
 <textarea
 id="affirmation"
 rows="3"
-placeholder="Write your affirmation...">
-</textarea>
+placeholder="Write your affirmation..."></textarea>
 
 <button class="save" onclick="saveGoal()">
 💾 Save My Goal
@@ -204,7 +209,6 @@ placeholder="Write your affirmation...">
 
 </div>
 
-
 <div class="counter">
 
 <div class="box">
@@ -224,7 +228,6 @@ placeholder="Write your affirmation...">
 
 </div>
 
-
 <button class="practice" onclick="completeMorning()">
 ☀️ Complete Morning 3
 </button>
@@ -237,7 +240,7 @@ placeholder="Write your affirmation...">
 🌙 Complete Night 9
 </button>
 
-<div class="badge" id="message">
+<div class="message" id="message">
 Start your 369 practice today ✨
 </div>
 
@@ -251,7 +254,7 @@ Start your 369 practice today ✨
 </div>
 
 <div class="badge" id="badge">
-🌱 Begin your journey
+🌱 Start Your Journey
 </div>
 
 </div>
@@ -272,9 +275,13 @@ No completed days yet.
 
 <script>
 
-function today() {
+function getToday() {
 
-return new Date().toISOString().split("T")[0];
+const d = new Date();
+
+return d.getFullYear() + "-" +
+String(d.getMonth() + 1).padStart(2, "0") + "-" +
+String(d.getDate()).padStart(2, "0");
 
 }
 
@@ -303,27 +310,21 @@ document.getElementById("message").innerHTML =
 function updateProgress() {
 
 const morning =
-Number(localStorage.getItem("morning") || 0);
+localStorage.getItem("morning") === "3";
 
 const afternoon =
-Number(localStorage.getItem("afternoon") || 0);
+localStorage.getItem("afternoon") === "6";
 
 const night =
-Number(localStorage.getItem("night") || 0);
+localStorage.getItem("night") === "9";
 
 let progress = 0;
 
-if (morning === 3) {
-progress += 33.33;
-}
+if (morning) progress += 33.33;
 
-if (afternoon === 6) {
-progress += 33.33;
-}
+if (afternoon) progress += 33.33;
 
-if (night === 9) {
-progress += 33.34;
-}
+if (night) progress += 33.34;
 
 document.getElementById("progress").innerText =
 Math.round(progress) + "%";
@@ -364,7 +365,16 @@ document.getElementById("message").innerHTML =
 
 function completeNight() {
 
-const currentDate = today();
+const today = getToday();
+
+if (localStorage.getItem("completedToday") === today) {
+
+document.getElementById("message").innerHTML =
+"✅ Today's 369 is already complete!";
+
+return;
+
+}
 
 localStorage.setItem("night", "9");
 
@@ -372,48 +382,12 @@ document.getElementById("night").innerText = "9";
 
 updateProgress();
 
-const lastCompleted =
-localStorage.getItem("lastCompleted");
-
-if (lastCompleted !== currentDate) {
-
-let streak =
-Number(localStorage.getItem("streak") || 0);
-
-streak++;
-
-localStorage.setItem("streak", streak);
-
-localStorage.setItem(
-"lastCompleted",
-currentDate
-);
-
-addHistory(currentDate);
-
-document.getElementById("streak").innerText =
-streak;
-
-updateBadge(streak);
-
-}
-
-document.getElementById("message").innerHTML =
-"🎉 Today's 369 practice is complete!";
-
-}
-
-
-function addHistory(date) {
-
 let history =
-JSON.parse(
-localStorage.getItem("history") || "[]"
-);
+JSON.parse(localStorage.getItem("history") || "[]");
 
-if (!history.includes(date)) {
+if (!history.includes(today)) {
 
-history.unshift(date);
+history.push(today);
 
 localStorage.setItem(
 "history",
@@ -422,7 +396,96 @@ JSON.stringify(history)
 
 }
 
+calculateStreak();
+
+localStorage.setItem(
+"completedToday",
+today
+);
+
+document.getElementById("message").innerHTML =
+"🎉 Today's 369 practice is complete!";
+
 showHistory();
+
+}
+
+
+function calculateStreak() {
+
+const history =
+JSON.parse(localStorage.getItem("history") || "[]");
+
+if (history.length === 0) {
+
+document.getElementById("streak").innerText = "0";
+
+return;
+
+}
+
+const dates = history
+.map(date => new Date(date))
+.sort((a,b) => b-a);
+
+let streak = 1;
+
+for (let i = 0; i < dates.length - 1; i++) {
+
+const difference =
+Math.round(
+(dates[i] - dates[i + 1]) /
+(1000 * 60 * 60 * 24)
+);
+
+if (difference === 1) {
+
+streak++;
+
+} else {
+
+break;
+
+}
+
+}
+
+document.getElementById("streak").innerText =
+streak;
+
+updateBadge(streak);
+
+}
+
+
+function updateBadge(streak) {
+
+let badge =
+"🌱 Start Your Journey";
+
+if (streak >= 7) {
+
+badge =
+"🏆 7 Days Streak!";
+
+}
+
+if (streak >= 30) {
+
+badge =
+"🥇 30 Days Streak!";
+
+}
+
+if (streak >= 100) {
+
+badge =
+"👑 100 Days Master!";
+
+}
+
+document.getElementById("badge").innerText =
+badge;
 
 }
 
@@ -430,51 +493,27 @@ showHistory();
 function showHistory() {
 
 const history =
-JSON.parse(
-localStorage.getItem("history") || "[]"
-);
+JSON.parse(localStorage.getItem("history") || "[]");
 
-const historyBox =
+const box =
 document.getElementById("history");
 
 if (history.length === 0) {
 
-historyBox.innerHTML =
+box.innerHTML =
 "No completed days yet.";
 
 return;
 
 }
 
-historyBox.innerHTML =
+box.innerHTML =
 history
+.slice()
+.reverse()
 .slice(0, 10)
-.map((date, index) =>
-"✅ " + date
-)
+.map(date => "✅ " + date)
 .join("<br>");
-
-}
-
-
-function updateBadge(streak) {
-
-let badge = "🌱 Keep going!";
-
-if (streak >= 7) {
-badge = "🏆 7 Days Streak!";
-}
-
-if (streak >= 30) {
-badge = "🥇 30 Days Streak!";
-}
-
-if (streak >= 100) {
-badge = "👑 100 Days Master!";
-}
-
-document.getElementById("badge").innerText =
-badge;
 
 }
 
@@ -496,13 +535,7 @@ localStorage.getItem("afternoon") || "0";
 document.getElementById("night").innerText =
 localStorage.getItem("night") || "0";
 
-const streak =
-Number(localStorage.getItem("streak") || 0);
-
-document.getElementById("streak").innerText =
-streak;
-
-updateBadge(streak);
+calculateStreak();
 
 updateProgress();
 
