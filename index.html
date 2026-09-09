@@ -59,6 +59,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 10px;
   font-size: 16px;
+  resize: vertical;
 }
 
 button {
@@ -79,6 +80,11 @@ button {
 
 .practice {
   background: #222;
+  color: white;
+}
+
+.journal-btn {
+  background: #7b3ff2;
   color: white;
 }
 
@@ -150,6 +156,19 @@ button {
   color: #555;
 }
 
+.journal-entry {
+  background: #f8f5ff;
+  padding: 12px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.journal-date {
+  font-weight: bold;
+  color: #7b3ff2;
+  margin-bottom: 5px;
+}
+
 .message {
   text-align: center;
   margin-top: 15px;
@@ -168,6 +187,8 @@ button {
 369 Method • Daily Manifestation
 </div>
 
+
+<!-- GOAL -->
 <div class="card">
 
 <h2>🌟 My Intention</h2>
@@ -193,6 +214,7 @@ placeholder="Write your affirmation..."></textarea>
 </div>
 
 
+<!-- TODAY'S PROGRESS -->
 <div class="card">
 
 <h2>📊 Today's Progress</h2>
@@ -247,6 +269,7 @@ Start your 369 practice today ✨
 </div>
 
 
+<!-- STREAK -->
 <div class="card">
 
 <div class="streak">
@@ -260,9 +283,43 @@ Start your 369 practice today ✨
 </div>
 
 
+<!-- DAILY JOURNAL -->
 <div class="card">
 
-<h2>📜 Practice History</h2>
+<h2>📝 Daily Journal</h2>
+
+<label>How do I feel today?</label>
+
+<textarea
+id="journal"
+rows="5"
+placeholder="Write your thoughts, feelings, gratitude or manifestation..."></textarea>
+
+<button class="journal-btn" onclick="saveJournal()">
+📖 Save Today's Journal
+</button>
+
+<div class="message" id="journalMessage"></div>
+
+</div>
+
+
+<!-- JOURNAL HISTORY -->
+<div class="card">
+
+<h2>📖 Journal History</h2>
+
+<div id="journalHistory">
+No journal entries yet.
+</div>
+
+</div>
+
+
+<!-- PRACTICE HISTORY -->
+<div class="card">
+
+<h2>📜 369 Practice History</h2>
 
 <div class="history" id="history">
 No completed days yet.
@@ -275,6 +332,8 @@ No completed days yet.
 
 <script>
 
+
+// GET TODAY
 function getToday() {
 
 const d = new Date();
@@ -286,6 +345,31 @@ String(d.getDate()).padStart(2, "0");
 }
 
 
+// RESET DAILY PRACTICE
+function checkNewDay() {
+
+const today = getToday();
+
+const savedDate =
+localStorage.getItem("practiceDate");
+
+if (savedDate !== today) {
+
+localStorage.setItem(
+"practiceDate",
+today
+);
+
+localStorage.setItem("morning", "0");
+localStorage.setItem("afternoon", "0");
+localStorage.setItem("night", "0");
+
+}
+
+}
+
+
+// SAVE GOAL
 function saveGoal() {
 
 const goal =
@@ -307,6 +391,7 @@ document.getElementById("message").innerHTML =
 }
 
 
+// UPDATE PROGRESS
 function updateProgress() {
 
 const morning =
@@ -335,6 +420,7 @@ progress + "%";
 }
 
 
+// MORNING
 function completeMorning() {
 
 localStorage.setItem("morning", "3");
@@ -349,6 +435,7 @@ document.getElementById("message").innerHTML =
 }
 
 
+// AFTERNOON
 function completeAfternoon() {
 
 localStorage.setItem("afternoon", "6");
@@ -363,11 +450,14 @@ document.getElementById("message").innerHTML =
 }
 
 
+// NIGHT
 function completeNight() {
 
 const today = getToday();
 
-if (localStorage.getItem("completedToday") === today) {
+if (
+localStorage.getItem("completedToday") === today
+) {
 
 document.getElementById("message").innerHTML =
 "✅ Today's 369 is already complete!";
@@ -382,8 +472,12 @@ document.getElementById("night").innerText = "9";
 
 updateProgress();
 
+
 let history =
-JSON.parse(localStorage.getItem("history") || "[]");
+JSON.parse(
+localStorage.getItem("history") || "[]"
+);
+
 
 if (!history.includes(today)) {
 
@@ -395,6 +489,7 @@ JSON.stringify(history)
 );
 
 }
+
 
 calculateStreak();
 
@@ -411,32 +506,45 @@ showHistory();
 }
 
 
+// CALCULATE STREAK
 function calculateStreak() {
 
 const history =
-JSON.parse(localStorage.getItem("history") || "[]");
+JSON.parse(
+localStorage.getItem("history") || "[]"
+);
 
 if (history.length === 0) {
 
 document.getElementById("streak").innerText = "0";
 
+updateBadge(0);
+
 return;
 
 }
+
 
 const dates = history
 .map(date => new Date(date))
 .sort((a,b) => b-a);
 
+
 let streak = 1;
 
-for (let i = 0; i < dates.length - 1; i++) {
+
+for (
+let i = 0;
+i < dates.length - 1;
+i++
+) {
 
 const difference =
 Math.round(
 (dates[i] - dates[i + 1]) /
 (1000 * 60 * 60 * 24)
 );
+
 
 if (difference === 1) {
 
@@ -450,6 +558,7 @@ break;
 
 }
 
+
 document.getElementById("streak").innerText =
 streak;
 
@@ -458,6 +567,7 @@ updateBadge(streak);
 }
 
 
+// BADGES
 function updateBadge(streak) {
 
 let badge =
@@ -490,13 +600,17 @@ badge;
 }
 
 
+// PRACTICE HISTORY
 function showHistory() {
 
 const history =
-JSON.parse(localStorage.getItem("history") || "[]");
+JSON.parse(
+localStorage.getItem("history") || "[]"
+);
 
 const box =
 document.getElementById("history");
+
 
 if (history.length === 0) {
 
@@ -507,39 +621,174 @@ return;
 
 }
 
+
 box.innerHTML =
 history
 .slice()
 .reverse()
 .slice(0, 10)
-.map(date => "✅ " + date)
+.map(date =>
+"✅ " + date
+)
 .join("<br>");
 
 }
 
 
+// SAVE JOURNAL
+function saveJournal() {
+
+const today = getToday();
+
+const text =
+document.getElementById("journal").value.trim();
+
+
+if (!text) {
+
+document.getElementById("journalMessage").innerHTML =
+"✍️ Please write something first.";
+
+return;
+
+}
+
+
+let journals =
+JSON.parse(
+localStorage.getItem("journals") || "{}"
+);
+
+
+journals[today] = text;
+
+
+localStorage.setItem(
+"journals",
+JSON.stringify(journals)
+);
+
+
+document.getElementById("journalMessage").innerHTML =
+"✅ Today's journal saved!";
+
+showJournalHistory();
+
+}
+
+
+// JOURNAL HISTORY
+function showJournalHistory() {
+
+const journals =
+JSON.parse(
+localStorage.getItem("journals") || "{}"
+);
+
+
+const box =
+document.getElementById("journalHistory");
+
+
+const dates =
+Object.keys(journals)
+.sort()
+.reverse()
+.slice(0, 10);
+
+
+if (dates.length === 0) {
+
+box.innerHTML =
+"No journal entries yet.";
+
+return;
+
+}
+
+
+box.innerHTML =
+dates.map(date => {
+
+return `
+<div class="journal-entry">
+<div class="journal-date">
+📅 ${date}
+</div>
+<div>
+${escapeHTML(journals[date])}
+</div>
+</div>
+`;
+
+}).join("");
+
+}
+
+
+// SECURITY
+function escapeHTML(text) {
+
+return text
+.replace(/&/g, "&amp;")
+.replace(/</g, "&lt;")
+.replace(/>/g, "&gt;")
+.replace(/"/g, "&quot;")
+.replace(/'/g, "&#039;");
+
+}
+
+
+// PAGE LOAD
 window.onload = function() {
+
+checkNewDay();
+
 
 document.getElementById("goal").value =
 localStorage.getItem("goal") || "";
 
+
 document.getElementById("affirmation").value =
 localStorage.getItem("affirmation") || "";
+
 
 document.getElementById("morning").innerText =
 localStorage.getItem("morning") || "0";
 
+
 document.getElementById("afternoon").innerText =
 localStorage.getItem("afternoon") || "0";
 
+
 document.getElementById("night").innerText =
 localStorage.getItem("night") || "0";
+
+
+const journals =
+JSON.parse(
+localStorage.getItem("journals") || "{}"
+);
+
+
+const today = getToday();
+
+
+if (journals[today]) {
+
+document.getElementById("journal").value =
+journals[today];
+
+}
+
 
 calculateStreak();
 
 updateProgress();
 
 showHistory();
+
+showJournalHistory();
 
 };
 
