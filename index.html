@@ -3,10 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Aung's 369 Manifesting</title>
 
 <style>
-*{box-sizing:border-box}
+
+*{
+box-sizing:border-box;
+}
 
 body{
 margin:0;
@@ -29,8 +33,61 @@ margin-bottom:5px;
 .subtitle{
 text-align:center;
 color:#666;
-margin-bottom:25px;
+margin-bottom:20px;
 }
+
+/* DASHBOARD */
+
+.dashboard{
+background:linear-gradient(135deg,#7b3ff2,#a66cff);
+color:white;
+padding:25px;
+border-radius:22px;
+margin-bottom:20px;
+box-shadow:0 6px 20px rgba(0,0,0,.15);
+}
+
+.dashboard h2{
+margin-top:0;
+}
+
+.goal-display{
+font-size:18px;
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.affirmation-display{
+font-size:15px;
+line-height:1.6;
+opacity:.95;
+}
+
+.dashboard-stats{
+display:flex;
+gap:10px;
+margin-top:20px;
+}
+
+.stat{
+flex:1;
+background:rgba(255,255,255,.18);
+padding:15px 5px;
+border-radius:14px;
+text-align:center;
+}
+
+.stat-number{
+font-size:25px;
+font-weight:bold;
+}
+
+.stat-label{
+font-size:12px;
+margin-top:5px;
+}
+
+/* CARD */
 
 .card{
 background:white;
@@ -40,7 +97,9 @@ border-radius:18px;
 box-shadow:0 4px 15px rgba(0,0,0,.08);
 }
 
-h2{margin-top:0}
+h2{
+margin-top:0;
+}
 
 label{
 display:block;
@@ -69,7 +128,8 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.save,.journal-btn{
+.save,
+.journal-btn{
 background:#7b3ff2;
 color:white;
 }
@@ -78,6 +138,8 @@ color:white;
 background:#222;
 color:white;
 }
+
+/* PROGRESS */
 
 .progress-box{
 background:#f1ebff;
@@ -107,6 +169,8 @@ background:#7b3ff2;
 transition:.3s;
 }
 
+/* COUNTERS */
+
 .counter{
 display:flex;
 gap:10px;
@@ -130,6 +194,8 @@ margin-top:5px;
 color:#666;
 }
 
+/* STREAK */
+
 .streak{
 text-align:center;
 font-size:25px;
@@ -142,10 +208,7 @@ margin-top:12px;
 font-size:18px;
 }
 
-.history{
-line-height:1.8;
-color:#555;
-}
+/* JOURNAL */
 
 .journal-entry{
 background:#f8f5ff;
@@ -160,11 +223,26 @@ color:#7b3ff2;
 margin-bottom:5px;
 }
 
+.history{
+line-height:1.8;
+color:#555;
+}
+
 .message{
 text-align:center;
 margin-top:15px;
 font-weight:bold;
 }
+
+.reminder{
+background:#fff5d6;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
+text-align:center;
+font-weight:bold;
+}
+
 </style>
 </head>
 
@@ -178,19 +256,63 @@ font-weight:bold;
 369 Method • Daily Manifestation
 </div>
 
+
+<!-- DASHBOARD -->
+
+<div class="dashboard">
+
+<h2>🌟 Today's Dashboard</h2>
+
+<div class="goal-display" id="dashboardGoal">
+Set your goal below ✨
+</div>
+
+<div class="affirmation-display" id="dashboardAffirmation">
+Set your affirmation below 💫
+</div>
+
+<div class="dashboard-stats">
+
+<div class="stat">
+<div class="stat-number" id="dashboardProgress">0%</div>
+<div class="stat-label">Progress</div>
+</div>
+
+<div class="stat">
+<div class="stat-number" id="dashboardStreak">0</div>
+<div class="stat-label">Day Streak</div>
+</div>
+
+</div>
+
+<div class="reminder" id="reminder">
+✨ Start your 369 practice today
+</div>
+
+</div>
+
+
+<!-- INTENTION -->
+
 <div class="card">
 
 <h2>🌟 My Intention</h2>
 
 <label>My Goal</label>
 
-<textarea id="goal" rows="3"
-placeholder="Write your goal..."></textarea>
+<textarea
+id="goal"
+rows="3"
+placeholder="Write your goal..."
+></textarea>
 
 <label>My Affirmation</label>
 
-<textarea id="affirmation" rows="3"
-placeholder="Write your affirmation..."></textarea>
+<textarea
+id="affirmation"
+rows="3"
+placeholder="Write your affirmation..."
+></textarea>
 
 <button class="save" onclick="saveGoal()">
 💾 Save My Goal
@@ -199,106 +321,186 @@ placeholder="Write your affirmation..."></textarea>
 </div>
 
 
+<!-- PROGRESS -->
+
 <div class="card">
 
 <h2>📊 Today's Progress</h2>
 
 <div class="progress-box">
 
-<div class="progress-number" id="progress">0%</div>
+<div class="progress-number" id="progress">
+0%
+</div>
 
 <div class="progress-bar">
-<div class="progress-fill" id="progressFill"></div>
+
+<div
+class="progress-fill"
+id="progressFill">
 </div>
 
 </div>
+
+</div>
+
 
 <div class="counter">
 
 <div class="box">
+
 <span id="morning">0</span>
-<span class="small">Morning / 3</span>
+
+<span class="small">
+Morning / 3
+</span>
+
 </div>
 
+
 <div class="box">
+
 <span id="afternoon">0</span>
-<span class="small">Afternoon / 6</span>
+
+<span class="small">
+Afternoon / 6
+</span>
+
 </div>
+
 
 <div class="box">
+
 <span id="night">0</span>
-<span class="small">Night / 9</span>
-</div>
+
+<span class="small">
+Night / 9
+</span>
 
 </div>
 
-<button class="practice" onclick="completeMorning()">
+</div>
+
+
+<button
+class="practice"
+onclick="completeMorning()">
+
 ☀️ Complete Morning 3
+
 </button>
 
-<button class="practice" onclick="completeAfternoon()">
+
+<button
+class="practice"
+onclick="completeAfternoon()">
+
 🌤️ Complete Afternoon 6
+
 </button>
 
-<button class="practice" onclick="completeNight()">
+
+<button
+class="practice"
+onclick="completeNight()">
+
 🌙 Complete Night 9
+
 </button>
 
-<div class="message" id="message">
+
+<div
+class="message"
+id="message">
+
 Start your 369 practice today ✨
-</div>
 
 </div>
 
+</div>
+
+
+<!-- STREAK -->
 
 <div class="card">
 
 <div class="streak">
-🔥 Streak: <span id="streak">0</span> Days
+
+🔥 Streak:
+<span id="streak">0</span> Days
+
 </div>
 
-<div class="badge" id="badge">
+<div
+class="badge"
+id="badge">
+
 🌱 Start Your Journey
-</div>
 
 </div>
 
+</div>
+
+
+<!-- JOURNAL -->
 
 <div class="card">
 
 <h2>📝 Daily Journal</h2>
 
-<label>How do I feel today?</label>
+<label>
+How do I feel today?
+</label>
 
-<textarea id="journal" rows="5"
-placeholder="Write your thoughts, feelings, gratitude or manifestation..."></textarea>
+<textarea
+id="journal"
+rows="5"
+placeholder="Write your thoughts, feelings, gratitude or manifestation..."
+></textarea>
 
-<button class="journal-btn" onclick="saveJournal()">
+<button
+class="journal-btn"
+onclick="saveJournal()">
+
 📖 Save Today's Journal
+
 </button>
 
-<div class="message" id="journalMessage"></div>
+<div
+class="message"
+id="journalMessage">
+</div>
 
 </div>
 
+
+<!-- JOURNAL HISTORY -->
 
 <div class="card">
 
 <h2>📖 Journal History</h2>
 
 <div id="journalHistory">
+
 No journal entries yet.
-</div>
 
 </div>
 
+</div>
+
+
+<!-- PRACTICE HISTORY -->
 
 <div class="card">
 
 <h2>📜 369 Practice History</h2>
 
-<div class="history" id="history">
+<div
+class="history"
+id="history">
+
 No completed days yet.
+
 </div>
 
 </div>
@@ -307,6 +509,9 @@ No completed days yet.
 
 
 <script>
+
+
+/* TODAY */
 
 function getToday(){
 
@@ -319,15 +524,21 @@ String(d.getDate()).padStart(2,"0");
 }
 
 
+/* NEW DAY RESET */
+
 function checkNewDay(){
 
 const today=getToday();
 
-const savedDate=localStorage.getItem("practiceDate");
+const savedDate=
+localStorage.getItem("practiceDate");
 
 if(savedDate!==today){
 
-localStorage.setItem("practiceDate",today);
+localStorage.setItem(
+"practiceDate",
+today
+);
 
 localStorage.setItem("morning","0");
 localStorage.setItem("afternoon","0");
@@ -338,13 +549,27 @@ localStorage.setItem("night","0");
 }
 
 
+/* SAVE GOAL */
+
 function saveGoal(){
 
-const goal=document.getElementById("goal").value;
-const affirmation=document.getElementById("affirmation").value;
+const goal=
+document.getElementById("goal").value;
 
-localStorage.setItem("goal",goal);
-localStorage.setItem("affirmation",affirmation);
+const affirmation=
+document.getElementById("affirmation").value;
+
+localStorage.setItem(
+"goal",
+goal
+);
+
+localStorage.setItem(
+"affirmation",
+affirmation
+);
+
+updateDashboard();
 
 document.getElementById("message").innerHTML=
 "✅ Goal and affirmation saved!";
@@ -352,76 +577,209 @@ document.getElementById("message").innerHTML=
 }
 
 
-function updateProgress(){
+/* DASHBOARD */
 
-const morning=localStorage.getItem("morning")==="3";
-const afternoon=localStorage.getItem("afternoon")==="6";
-const night=localStorage.getItem("night")==="9";
+function updateDashboard(){
 
-let progress=0;
+const goal=
+localStorage.getItem("goal")||"Set your goal below ✨";
 
-if(morning)progress+=33.33;
-if(afternoon)progress+=33.33;
-if(night)progress+=33.34;
+const affirmation=
+localStorage.getItem("affirmation")||
+"Set your affirmation below 💫";
 
-document.getElementById("progress").innerText=
-Math.round(progress)+"%";
+document.getElementById(
+"dashboardGoal"
+).innerText=goal;
 
-document.getElementById("progressFill").style.width=
-progress+"%";
+document.getElementById(
+"dashboardAffirmation"
+).innerText=affirmation;
+
+document.getElementById(
+"dashboardProgress"
+).innerText=
+document.getElementById("progress").innerText;
+
+document.getElementById(
+"dashboardStreak"
+).innerText=
+document.getElementById("streak").innerText;
+
+updateReminder();
 
 }
 
 
+/* PROGRESS */
+
+function updateProgress(){
+
+const morning=
+localStorage.getItem("morning")==="3";
+
+const afternoon=
+localStorage.getItem("afternoon")==="6";
+
+const night=
+localStorage.getItem("night")==="9";
+
+let progress=0;
+
+if(morning) progress+=33.33;
+
+if(afternoon) progress+=33.33;
+
+if(night) progress+=33.34;
+
+const percent=
+Math.round(progress)+"%";
+
+document.getElementById(
+"progress"
+).innerText=percent;
+
+document.getElementById(
+"progressFill"
+).style.width=
+progress+"%";
+
+document.getElementById(
+"dashboardProgress"
+).innerText=
+percent;
+
+updateReminder();
+
+}
+
+
+/* REMINDER */
+
+function updateReminder(){
+
+const morning=
+localStorage.getItem("morning")==="3";
+
+const afternoon=
+localStorage.getItem("afternoon")==="6";
+
+const night=
+localStorage.getItem("night")==="9";
+
+let text="✨ Start your 369 practice today";
+
+if(!morning){
+
+text="☀️ Morning: Write your affirmation 3 times";
+
+}else if(!afternoon){
+
+text="🌤️ Afternoon: Write your affirmation 6 times";
+
+}else if(!night){
+
+text="🌙 Night: Write your affirmation 9 times";
+
+}else{
+
+text="🎉 Today's 369 is complete!";
+
+}
+
+document.getElementById(
+"reminder"
+).innerText=text;
+
+}
+
+
+/* MORNING */
+
 function completeMorning(){
 
-localStorage.setItem("morning","3");
+localStorage.setItem(
+"morning",
+"3"
+);
 
-document.getElementById("morning").innerText="3";
+document.getElementById(
+"morning"
+).innerText="3";
 
 updateProgress();
 
-document.getElementById("message").innerHTML=
+document.getElementById(
+"message"
+).innerHTML=
 "☀️ Morning 3 completed!";
 
 }
 
 
+/* AFTERNOON */
+
 function completeAfternoon(){
 
-localStorage.setItem("afternoon","6");
+localStorage.setItem(
+"afternoon",
+"6"
+);
 
-document.getElementById("afternoon").innerText="6";
+document.getElementById(
+"afternoon"
+).innerText="6";
 
 updateProgress();
 
-document.getElementById("message").innerHTML=
+document.getElementById(
+"message"
+).innerHTML=
 "🌤️ Afternoon 6 completed!";
 
 }
 
 
+/* NIGHT */
+
 function completeNight(){
 
 const today=getToday();
 
-if(localStorage.getItem("completedToday")===today){
+if(
+localStorage.getItem(
+"completedToday"
+)===today
+){
 
-document.getElementById("message").innerHTML=
+document.getElementById(
+"message"
+).innerHTML=
 "✅ Today's 369 is already complete!";
 
 return;
 
 }
 
-localStorage.setItem("night","9");
+localStorage.setItem(
+"night",
+"9"
+);
 
-document.getElementById("night").innerText="9";
+document.getElementById(
+"night"
+).innerText="9";
 
 updateProgress();
 
+
 let history=
-JSON.parse(localStorage.getItem("history")||"[]");
+JSON.parse(
+localStorage.getItem(
+"history"
+)||"[]"
+);
+
 
 if(!history.includes(today)){
 
@@ -434,32 +792,53 @@ JSON.stringify(history)
 
 }
 
+
+localStorage.setItem(
+"completedToday",
+today
+);
+
 calculateStreak();
 
-localStorage.setItem("completedToday",today);
-
-document.getElementById("message").innerHTML=
+document.getElementById(
+"message"
+).innerHTML=
 "🎉 Today's 369 practice is complete!";
 
 showHistory();
 
+updateDashboard();
+
 }
 
+
+/* STREAK */
 
 function calculateStreak(){
 
 const history=
-JSON.parse(localStorage.getItem("history")||"[]");
+JSON.parse(
+localStorage.getItem(
+"history"
+)||"[]"
+);
 
 if(history.length===0){
 
-document.getElementById("streak").innerText="0";
+document.getElementById(
+"streak"
+).innerText="0";
 
 updateBadge(0);
+
+document.getElementById(
+"dashboardStreak"
+).innerText="0";
 
 return;
 
 }
+
 
 const dates=history
 .map(date=>new Date(date))
@@ -467,7 +846,12 @@ const dates=history
 
 let streak=1;
 
-for(let i=0;i<dates.length-1;i++){
+
+for(
+let i=0;
+i<dates.length-1;
+i++
+){
 
 const difference=Math.round(
 (dates[i]-dates[i+1])/
@@ -486,87 +870,136 @@ break;
 
 }
 
-document.getElementById("streak").innerText=streak;
+
+document.getElementById(
+"streak"
+).innerText=streak;
+
+document.getElementById(
+"dashboardStreak"
+).innerText=streak;
 
 updateBadge(streak);
 
 }
 
 
+/* BADGE */
+
 function updateBadge(streak){
 
-let badge="🌱 Start Your Journey";
+let badge=
+"🌱 Start Your Journey";
 
 if(streak>=7){
+
 badge="🏆 7 Days Streak!";
+
 }
 
 if(streak>=30){
+
 badge="🥇 30 Days Streak!";
+
 }
 
 if(streak>=100){
+
 badge="👑 100 Days Master!";
-}
-
-document.getElementById("badge").innerText=badge;
 
 }
 
+document.getElementById(
+"badge"
+).innerText=badge;
+
+}
+
+
+/* PRACTICE HISTORY */
 
 function showHistory(){
 
 const history=
-JSON.parse(localStorage.getItem("history")||"[]");
+JSON.parse(
+localStorage.getItem(
+"history"
+)||"[]"
+);
 
-const box=document.getElementById("history");
+const box=
+document.getElementById(
+"history"
+);
 
 if(history.length===0){
 
-box.innerHTML="No completed days yet.";
+box.innerHTML=
+"No completed days yet.";
 
 return;
 
 }
+
 
 box.innerHTML=
 history
 .slice()
 .reverse()
 .slice(0,10)
-.map(date=>"✅ "+date)
+.map(
+date=>"✅ "+date
+)
 .join("<br>");
 
 }
 
+
+/* SAVE JOURNAL */
 
 function saveJournal(){
 
 const today=getToday();
 
 const text=
-document.getElementById("journal").value.trim();
+document
+.getElementById("journal")
+.value
+.trim();
+
 
 if(!text){
 
-document.getElementById("journalMessage").innerHTML=
+document.getElementById(
+"journalMessage"
+).innerHTML=
 "✍️ Please write something first.";
 
 return;
 
 }
 
+
 let journals=
-JSON.parse(localStorage.getItem("journals")||"{}");
+JSON.parse(
+localStorage.getItem(
+"journals"
+)||"{}"
+);
+
 
 journals[today]=text;
+
 
 localStorage.setItem(
 "journals",
 JSON.stringify(journals)
 );
 
-document.getElementById("journalMessage").innerHTML=
+
+document.getElementById(
+"journalMessage"
+).innerHTML=
 "✅ Today's journal saved!";
 
 showJournalHistory();
@@ -574,36 +1007,53 @@ showJournalHistory();
 }
 
 
+/* JOURNAL HISTORY */
+
 function showJournalHistory(){
 
 const journals=
-JSON.parse(localStorage.getItem("journals")||"{}");
+JSON.parse(
+localStorage.getItem(
+"journals"
+)||"{}"
+);
 
-const box=document.getElementById("journalHistory");
+const box=
+document.getElementById(
+"journalHistory"
+);
 
-const dates=Object.keys(journals)
+const dates=
+Object.keys(journals)
 .sort()
 .reverse()
 .slice(0,10);
 
+
 if(dates.length===0){
 
-box.innerHTML="No journal entries yet.";
+box.innerHTML=
+"No journal entries yet.";
 
 return;
 
 }
 
-box.innerHTML=dates.map(date=>{
+
+box.innerHTML=
+dates.map(date=>{
 
 return `
 <div class="journal-entry">
+
 <div class="journal-date">
 📅 ${date}
 </div>
+
 <div>
 ${escapeHTML(journals[date])}
 </div>
+
 </div>
 `;
 
@@ -611,6 +1061,8 @@ ${escapeHTML(journals[date])}
 
 }
 
+
+/* SECURITY */
 
 function escapeHTML(text){
 
@@ -624,41 +1076,83 @@ return text
 }
 
 
+/* PAGE LOAD */
+
 window.onload=function(){
 
 checkNewDay();
 
-document.getElementById("goal").value=
-localStorage.getItem("goal")||"";
 
-document.getElementById("affirmation").value=
-localStorage.getItem("affirmation")||"";
+document.getElementById(
+"goal"
+).value=
+localStorage.getItem(
+"goal"
+)||"";
 
-document.getElementById("morning").innerText=
-localStorage.getItem("morning")||"0";
 
-document.getElementById("afternoon").innerText=
-localStorage.getItem("afternoon")||"0";
+document.getElementById(
+"affirmation"
+).value=
+localStorage.getItem(
+"affirmation"
+)||"";
 
-document.getElementById("night").innerText=
-localStorage.getItem("night")||"0";
+
+document.getElementById(
+"morning"
+).innerText=
+localStorage.getItem(
+"morning"
+)||"0";
+
+
+document.getElementById(
+"afternoon"
+).innerText=
+localStorage.getItem(
+"afternoon"
+)||"0";
+
+
+document.getElementById(
+"night"
+).innerText=
+localStorage.getItem(
+"night"
+)||"0";
+
 
 const journals=
-JSON.parse(localStorage.getItem("journals")||"{}");
+JSON.parse(
+localStorage.getItem(
+"journals"
+)||"{}"
+);
+
 
 const today=getToday();
 
+
 if(journals[today]){
 
-document.getElementById("journal").value=
+document.getElementById(
+"journal"
+).value=
 journals[today];
 
 }
 
+
 calculateStreak();
+
 updateProgress();
+
 showHistory();
+
 showJournalHistory();
+
+updateDashboard();
 
 };
 
