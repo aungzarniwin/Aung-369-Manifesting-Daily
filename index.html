@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>369 Manifestation Journal & Universe Guide</title>
+    <title>369 Manifestation Journal & Streak Tracker</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -17,7 +17,7 @@
                             800: '#1a1429',
                             700: '#2b2142',
                             600: '#433469',
-                            accent: '#d4af37', // Gold accent
+                            accent: '#d4af37',
                         }
                     }
                 }
@@ -51,14 +51,14 @@
                     <p class="text-xs text-gray-400">Nikola Tesla Universe Frequency</p>
                 </div>
             </div>
-            <div class="flex items-center space-x-3">
+            <div class="flex items-center space-x-2 sm:space-x-3">
                 <button onclick="openGuideModal()" class="bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 px-3 py-2 rounded-xl text-sm font-medium transition flex items-center space-x-2 border border-amber-500/30">
                     <i class="fa-solid fa-book-open"></i>
-                    <span class="hidden sm:inline">လမ်းညွှန် (Guide)</span>
+                    <span class="hidden sm:inline">လမ်းညွှန်</span>
                 </button>
                 <button onclick="openNoteModal()" class="bg-mystic-700 hover:bg-mystic-600 text-amber-300 px-3 py-2 rounded-xl text-sm font-medium transition flex items-center space-x-2 border border-amber-500/30">
                     <i class="fa-solid fa-note-sticky"></i>
-                    <span class="hidden sm:inline">မှတ်စု (Notes)</span>
+                    <span class="hidden sm:inline">မှတ်စု</span>
                 </button>
             </div>
         </div>
@@ -73,11 +73,17 @@
             
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
                 <div>
-                    <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">Current Intention</span>
-                    <h2 id="displayIntention" class="text-xl md:text-2xl font-bold text-white mt-2">Loading your intention...</h2>
+                    <div class="flex items-center gap-3">
+                        <span class="text-xs font-semibold uppercase tracking-wider text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">Current Intention</span>
+                        <!-- Streak Badge -->
+                        <span id="streakBadge" class="text-xs font-bold text-orange-400 bg-orange-500/10 px-3 py-1 rounded-full border border-orange-500/20 flex items-center gap-1.5">
+                            <i class="fa-solid fa-fire"></i> <span id="streakCountText">0 Days Streak</span>
+                        </span>
+                    </div>
+                    <h2 id="displayIntention" class="text-xl md:text-2xl font-bold text-white mt-3">Loading intention...</h2>
                 </div>
-                <button onclick="editIntention()" class="text-sm bg-mystic-700 hover:bg-mystic-600 text-gray-300 hover:text-white px-4 py-2 rounded-xl transition border border-gray-600">
-                    <i class="fa-solid fa-pen text-xs mr-1"></i> ပြင်ရန် (Edit)
+                <button onclick="editIntention()" class="text-sm bg-mystic-700 hover:bg-mystic-600 text-gray-300 hover:text-white px-4 py-2 rounded-xl transition border border-gray-600 whitespace-nowrap">
+                    <i class="fa-solid fa-pen text-xs mr-1"></i> ပြင်ရန်
                 </button>
             </div>
 
@@ -105,8 +111,7 @@
                         </h3>
                         <span id="morningCount" class="text-xs bg-amber-500/20 text-amber-300 px-2.5 py-1 rounded-full">0/3</span>
                     </div>
-                    <p class="text-xs text-gray-400 mb-4">နံနက်ခင်းတွင် ၃ ကြိမ်တိတိ ရေးသားပါ။</p>
-                    
+                    <p class="text-xs text-gray-400 mb-4">နံနက်ခင်းတွင် ၃ ကြိမ် ရေးပါ။</p>
                     <div id="morningInputs" class="space-y-3"></div>
                 </div>
                 <button onclick="saveSession('morning')" class="mt-6 w-full bg-amber-500 hover:bg-amber-600 text-mystic-900 font-bold py-2.5 rounded-xl transition shadow-lg shadow-amber-500/20 text-sm">
@@ -123,8 +128,7 @@
                         </h3>
                         <span id="afternoonCount" class="text-xs bg-purple-500/20 text-purple-300 px-2.5 py-1 rounded-full">0/6</span>
                     </div>
-                    <p class="text-xs text-gray-400 mb-4">နေ့လယ်ပိုင်းတွင် ၆ ကြိမ်တိတိ ရေးသားပါ။</p>
-                    
+                    <p class="text-xs text-gray-400 mb-4">နေ့လယ်ပိုင်းတွင် ၆ ကြိမ် ရေးပါ။</p>
                     <div id="afternoonInputs" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
                 </div>
                 <button onclick="saveSession('afternoon')" class="mt-6 w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2.5 rounded-xl transition shadow-lg shadow-purple-600/20 text-sm">
@@ -141,8 +145,7 @@
                         </h3>
                         <span id="nightCount" class="text-xs bg-indigo-500/20 text-indigo-300 px-2.5 py-1 rounded-full">0/9</span>
                     </div>
-                    <p class="text-xs text-gray-400 mb-4">ညအိပ်ရာဝင်ချိန် ၉ ကြိမ်တိတိ ရေးသားပါ။</p>
-                    
+                    <p class="text-xs text-gray-400 mb-4">ညအိပ်ရာဝင်ချိန် ၉ ကြိမ် ရေးပါ။</p>
                     <div id="nightInputs" class="space-y-2 max-h-60 overflow-y-auto pr-1"></div>
                 </div>
                 <button onclick="saveSession('night')" class="mt-6 w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-xl transition shadow-lg shadow-indigo-600/20 text-sm">
@@ -159,60 +162,43 @@
         <div class="glass-card rounded-2xl max-w-2xl w-full p-6 space-y-4 border border-amber-500/30 max-h-[85vh] overflow-y-auto">
             <div class="flex justify-between items-center sticky top-0 bg-mystic-800/90 py-2 border-b border-mystic-700">
                 <h3 class="text-lg font-bold text-amber-300 flex items-center gap-2">
-                    <i class="fa-solid fa-book-open"></i> Universe & 369 Manifestation လမ်းညွှန်
+                    <i class="fa-solid fa-book-open"></i> Universe & 369 လမ်းညွှန်
                 </h3>
                 <button onclick="closeGuideModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
             
             <div class="space-y-4 text-sm text-gray-300 leading-relaxed">
                 <div>
-                    <h4 class="font-bold text-amber-300 mb-1">🌌 Manifestation ဆိုသည်မှာ</h4>
-                    <p>မိမိ၏ စိတ်ကူး၊ ဆန္ဒနှင့် ခံစားချက်များကို ရုပ်ဝတ္ထုအဖြစ် လက်တွေ့ကမ္ဘာတွင် ဖြစ်မြောက်အောင် ဖန်တီးယူခြင်း ဖြစ်ပါသည်။ Law of Attraction အရ တုန်ခါမှုအကြိမ်ရေ (Frequency) တူရာဆွဲငင်သည်ဟု ယုံကြည်ကြသည်။</p>
-                </div>
-                <div>
-                    <h4 class="font-bold text-amber-300 mb-1">🔮 Nikola Tesla ၏ 3-6-9 နည်းလမ်း</h4>
-                    <p>ဂဏန်း ၃၊ ၆၊ ၉ သည် စက္ကဝါ၏ သော့ချက်ဂဏန်းများဖြစ်ပြီး စွမ်းအင်စီးဆင်းမှုကို အထောက်အကူပြုသည်။ တစ်နေ့လျှင် ၃ အကြိမ်ခွဲ၍ အောက်ပါအတိုင်း ရေးသားပါ -</p>
-                    <ul class="list-disc list-inside mt-2 space-y-1 text-gray-400">
-                        <li><strong class="text-amber-200">မနက်ခင်း (၃ ကြိမ်):</strong> နိုးနိုးချင်း စိတ်ကြည်လင်ချိန်</li>
-                        <li><strong class="text-purple-200">နေ့လယ်ပိုင်း (၆ ကြိမ်):</strong> အလယ်ပိုင်း အာရုံစိုက်ချိန်</li>
-                        <li><strong class="text-indigo-200">ညအိပ်ရာဝင် (၉ ကြိမ်):</strong> အိပ်စက်ခါနီး စိတ်အေးချမ်းချိန်</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-bold text-amber-300 mb-1">✨ အကျိုးဖြစ်ထွန်းပုံ & အကြံပြုချက်</h4>
-                    <p>၁။ မသိစိတ် (Subconscious Mind) ကို ပြန်လည်ပုံဖော်ပေးနိုင်ခြင်း။<br>
-                    ၂။ စိတ်ဓာတ်နှင့် ကျေးဇူးတင်စိတ် (Gratitude) မြင့်တက်လာခြင်း။<br>
-                    ၃။ လိုချင်သည့်ပန်းတိုင်ဆီသို့ အခွင့်အလမ်းများကို ပိုမိုမြင်တွေ့လာစေခြင်း။</p>
+                    <h4 class="font-bold text-amber-300 mb-1">🌌 Manifestation & Streak</h4>
+                    <p>တစ်နေ့တာ ရေးသားမှု အပြည့်အစုံ (100%) ပြီးမြောက်ပါက Streak (ရက်ဆက်) အလိုအလျောက် တိုးသွားပါမည်။ Local Data များကို ဘေးကင်းစွာ သိမ်းဆည်းပေးထားပါသည်။</p>
                 </div>
             </div>
 
             <div class="flex justify-end pt-2">
                 <button onclick="closeGuideModal()" class="bg-amber-500 hover:bg-amber-600 text-mystic-900 px-5 py-2 rounded-xl text-sm font-bold transition">
-                    နားလည်ပါပြီ (Got it)
+                    နားလည်ပါပြီ
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Note & Draft Modal -->
+    <!-- Note Modal -->
     <div id="noteModal" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-card rounded-2xl max-w-lg w-full p-6 space-y-4 border border-amber-500/30">
             <div class="flex justify-between items-center">
                 <h3 class="text-lg font-bold text-amber-300 flex items-center gap-2">
-                    <i class="fa-solid fa-note-sticky"></i> မူကြမ်း မှတ်စုများ (Notes & Drafts)
+                    <i class="fa-solid fa-note-sticky"></i> မူကြမ်း မှတ်စုများ
                 </h3>
                 <button onclick="closeNoteModal()" class="text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
-            <p class="text-xs text-gray-400">ဒီနေရာမှာ မိမိရေးချင်တဲ့ Manifestation စာသားများကို အရင် Draft ရေးမှတ်ပြီး App ထဲ ပြန်ကူးထည့်နိုင်ပါတယ်။</p>
-            
             <textarea id="userNotes" rows="6" class="w-full bg-mystic-900 border border-mystic-700 rounded-xl p-3 text-sm text-gray-200 focus:outline-none focus:border-amber-400" placeholder="ဒီနေရာမှာ စာသားများ ရေးမှတ်ထားပါ..."></textarea>
             
             <div class="flex justify-end space-x-3">
                 <button onclick="copyNotes()" class="bg-mystic-700 hover:bg-mystic-600 text-amber-300 px-4 py-2 rounded-xl text-sm font-medium transition border border-amber-500/20">
-                    <i class="fa-solid fa-copy mr-1"></i> Copy Notes
+                    <i class="fa-solid fa-copy mr-1"></i> Copy
                 </button>
                 <button onclick="saveNotes()" class="bg-amber-500 hover:bg-amber-600 text-mystic-900 px-5 py-2 rounded-xl text-sm font-bold transition">
-                    Save Note
+                    Save
                 </button>
             </div>
         </div>
@@ -220,23 +206,67 @@
 
     <!-- Footer -->
     <footer class="text-center py-6 text-xs text-gray-500 border-t border-mystic-700/30 mt-12">
-        <p>369 Manifestation Journal & Tracker • Created for Daily Abundance</p>
+        <p>369 Manifestation Journal & Streak Tracker • Secure Local Storage</p>
     </footer>
 
-    <!-- JavaScript Logic -->
+    <!-- JavaScript Logic with Safe Migration & Streak -->
     <script>
+        const STORAGE_KEY = 'manifestation_369_app_data_v2';
+        
         let appData = {
             intention: "I am deeply grateful for abundant wealth and success flowing into my life effortlessly.",
+            date: getTodayDateString(),
             morning: ["", "", ""],
             afternoon: ["", "", "", "", "", ""],
-            night: ["", "", "", "", "", "", "", "", ""]
+            night: ["", "", "", "", "", "", "", "", ""],
+            streak: 0,
+            lastCompletedDate: null
         };
 
+        function getTodayDateString() {
+            const d = new Date();
+            return d.toISOString().split('T')[0];
+        }
+
         function loadData() {
-            const saved = localStorage.getItem('manifestation_369_data');
-            if (saved) {
-                try { appData = JSON.parse(saved); } catch (e) {}
+            const saved = localStorage.getItem(STORAGE_KEY);
+            // Fallback to older storage key if v2 doesn't exist to prevent data loss
+            const oldSaved = localStorage.getItem('manifestation_369_data');
+
+            let rawData = saved ? JSON.parse(saved) : (oldSaved ? JSON.parse(oldSaved) : null);
+
+            if (rawData) {
+                appData.intention = rawData.intention || appData.intention;
+                appData.streak = rawData.streak || 0;
+                appData.lastCompletedDate = rawData.lastCompletedDate || null;
+
+                const today = getTodayDateString();
+                // If it's a new day, reset input fields for fresh writing, but keep streak and intention intact
+                if (rawData.date !== today) {
+                    // Check streak validity: if lastCompletedDate was older than yesterday, reset streak
+                    if (rawData.lastCompletedDate) {
+                        const lastDate = new Date(rawData.lastCompletedDate);
+                        const currDate = new Date(today);
+                        const diffTime = currDate - lastDate;
+                        const diffDays = diffTime / (1000 * 60 * 60 * 24);
+                        
+                        if (diffDays > 1) {
+                            appData.streak = 0; // Streak broken
+                        }
+                    } else {
+                        appData.streak = 0;
+                    }
+                    appData.date = today;
+                    appData.morning = ["", "", ""];
+                    appData.afternoon = ["", "", "", "", "", ""];
+                    appData.night = ["", "", "", "", "", "", "", "", ""];
+                } else {
+                    appData.morning = rawData.morning || ["", "", ""];
+                    appData.afternoon = rawData.afternoon || ["", "", "", "", "", ""];
+                    appData.night = rawData.night || ["", "", "", "", "", "", "", "", ""];
+                }
             }
+
             const savedNotes = localStorage.getItem('manifestation_user_notes');
             if (savedNotes) {
                 document.getElementById('userNotes').value = savedNotes;
@@ -245,44 +275,34 @@
         }
 
         function saveData() {
-            localStorage.setItem('manifestation_369_data', JSON.stringify(appData));
+            appData.date = getTodayDateString();
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
             updateProgress();
         }
 
         function renderUI() {
             document.getElementById('displayIntention').innerText = appData.intention;
+            document.getElementById('streakCountText').innerText = `${appData.streak} Days Streak`;
 
             // Morning
-            const morningContainer = document.getElementById('morningInputs');
-            morningContainer.innerHTML = '';
+            const mc = document.getElementById('morningInputs');
+            mc.innerHTML = '';
             appData.morning.forEach((val, idx) => {
-                morningContainer.innerHTML += `
-                    <input type="text" value="${val}" oninput="updateValue('morning', ${idx}, this.value)" 
-                    class="w-full bg-mystic-900/80 border border-mystic-700 rounded-xl px-3 py-2 text-xs text-gray-200 focus:outline-none focus:border-amber-400" 
-                    placeholder="Morning affirmation ${idx+1}">
-                `;
+                mc.innerHTML += `<input type="text" value="${val}" oninput="updateValue('morning', ${idx}, this.value)" class="w-full bg-mystic-900/80 border border-mystic-700 rounded-xl px-3 py-2 text-xs text-gray-200 focus:outline-none focus:border-amber-400" placeholder="Morning affirmation ${idx+1}">`;
             });
 
             // Afternoon
-            const afContainer = document.getElementById('afternoonInputs');
-            afContainer.innerHTML = '';
+            const ac = document.getElementById('afternoonInputs');
+            ac.innerHTML = '';
             appData.afternoon.forEach((val, idx) => {
-                afContainer.innerHTML += `
-                    <input type="text" value="${val}" oninput="updateValue('afternoon', ${idx}, this.value)" 
-                    class="w-full bg-mystic-900/80 border border-mystic-700 rounded-xl px-3 py-2 text-xs text-gray-200 focus:outline-none focus:border-purple-400" 
-                    placeholder="Afternoon affirmation ${idx+1}">
-                `;
+                ac.innerHTML += `<input type="text" value="${val}" oninput="updateValue('afternoon', ${idx}, this.value)" class="w-full bg-mystic-900/80 border border-mystic-700 rounded-xl px-3 py-2 text-xs text-gray-200 focus:outline-none focus:border-purple-400" placeholder="Afternoon affirmation ${idx+1}">`;
             });
 
             // Night
-            const nightContainer = document.getElementById('nightInputs');
-            nightContainer.innerHTML = '';
+            const nc = document.getElementById('nightInputs');
+            nc.innerHTML = '';
             appData.night.forEach((val, idx) => {
-                nightContainer.innerHTML += `
-                    <input type="text" value="${val}" oninput="updateValue('night', ${idx}, this.value)" 
-                    class="w-full bg-mystic-900/80 border border-mystic-700 rounded-xl px-3 py-2 text-xs text-gray-200 focus:outline-none focus:border-indigo-400" 
-                    placeholder="Night affirmation ${idx+1}">
-                `;
+                nc.innerHTML += `<input type="text" value="${val}" oninput="updateValue('night', ${idx}, this.value)" class="w-full bg-mystic-900/80 border border-mystic-700 rounded-xl px-3 py-2 text-xs text-gray-200 focus:outline-none focus:border-indigo-400" placeholder="Night affirmation ${idx+1}">`;
             });
 
             updateProgress();
@@ -294,19 +314,47 @@
         }
 
         function updateProgress() {
-            let morningFilled = appData.morning.filter(v => v.trim() !== '').length;
-            let afFilled = appData.afternoon.filter(v => v.trim() !== '').length;
-            let nightFilled = appData.night.filter(v => v.trim() !== '').length;
+            let mF = appData.morning.filter(v => v.trim() !== '').length;
+            let aF = appData.afternoon.filter(v => v.trim() !== '').length;
+            let nF = appData.night.filter(v => v.trim() !== '').length;
 
-            document.getElementById('morningCount').innerText = `${morningFilled}/3`;
-            document.getElementById('afternoonCount').innerText = `${afFilled}/6`;
-            document.getElementById('nightCount').innerText = `${nightFilled}/9`;
+            document.getElementById('morningCount').innerText = `${mF}/3`;
+            document.getElementById('afternoonCount').innerText = `${aF}/6`;
+            document.getElementById('nightCount').innerText = `${nF}/9`;
 
-            let totalFilled = morningFilled + afFilled + nightFilled;
-            let percentage = Math.round((totalFilled / 18) * 100);
+            let total = mF + aF + nF;
+            let pct = Math.round((total / 18) * 100);
 
-            document.getElementById('progressText').innerText = `${percentage}%`;
-            document.getElementById('progressBar').style.width = `${percentage}%`;
+            document.getElementById('progressText').innerText = `${pct}%`;
+            document.getElementById('progressBar').style.width = `${pct}%`;
+
+            // Check if 100% completed today
+            if (pct === 100) {
+                checkAndAwardStreak();
+            }
+        }
+
+        function checkAndAwardStreak() {
+            const today = getTodayDateString();
+            if (appData.lastCompletedDate !== today) {
+                // Check if streak was maintained from yesterday
+                if (appData.lastCompletedDate) {
+                    const lastD = new Date(appData.lastCompletedDate);
+                    const currD = new Date(today);
+                    const diffDays = (currD - lastD) / (1000 * 60 * 60 * 24);
+                    
+                    if (diffDays === 1) {
+                        appData.streak += 1;
+                    } else if (diffDays > 1) {
+                        appData.streak = 1;
+                    }
+                } else {
+                    appData.streak = 1;
+                }
+                appData.lastCompletedDate = today;
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(appData));
+                document.getElementById('streakCountText').innerText = `${appData.streak} Days Streak`;
+            }
         }
 
         function saveSession(section) {
@@ -315,39 +363,30 @@
         }
 
         function editIntention() {
-            const newIntention = prompt("Enter your new main manifestation intention:", appData.intention);
-            if (newIntention !== null && newIntention.trim() !== "") {
-                appData.intention = newIntention.trim();
+            const newInt = prompt("Enter your new main manifestation intention:", appData.intention);
+            if (newInt !== null && newInt.trim() !== "") {
+                appData.intention = newInt.trim();
                 saveData();
+                document.getElementById('displayIntention').innerText = appData.intention;
             }
         }
 
-        // Guide Modal Functions
-        function openGuideModal() {
-            document.getElementById('guideModal').classList.remove('hidden');
-        }
-        function closeGuideModal() {
-            document.getElementById('guideModal').classList.add('hidden');
-        }
+        function openGuideModal() { document.getElementById('guideModal').classList.remove('hidden'); }
+        function closeGuideModal() { document.getElementById('guideModal').classList.add('hidden'); }
+        function openNoteModal() { document.getElementById('noteModal').classList.remove('hidden'); }
+        function closeNoteModal() { document.getElementById('noteModal').classList.add('hidden'); }
 
-        // Notes Modal Functions
-        function openNoteModal() {
-            document.getElementById('noteModal').classList.remove('hidden');
-        }
-        function closeNoteModal() {
-            document.getElementById('noteModal').classList.add('hidden');
-        }
         function saveNotes() {
-            const notes = document.getElementById('userNotes').value;
-            localStorage.setItem('manifestation_user_notes', notes);
-            alert("Notes saved successfully! 📝");
+            localStorage.setItem('manifestation_user_notes', document.getElementById('userNotes').value);
+            alert("Notes saved! 📝");
             closeNoteModal();
         }
+
         function copyNotes() {
-            const notesText = document.getElementById('userNotes');
-            notesText.select();
-            navigator.clipboard.writeText(notesText.value);
-            alert("Notes copied to clipboard! 📋");
+            const t = document.getElementById('userNotes');
+            t.select();
+            navigator.clipboard.writeText(t.value);
+            alert("Copied to clipboard! 📋");
         }
 
         window.onload = loadData;
